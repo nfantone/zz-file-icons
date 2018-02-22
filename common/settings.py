@@ -235,6 +235,4 @@ def init():
     global _default_settings
     _default_settings = _get_default()
 
-    sublinter()
-
     _update()

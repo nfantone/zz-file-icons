@@ -1,3 +1,18 @@
+<a name="3.2.2"></a>
+## [3.2.2](https://github.com/ihodev/a-file-icon/compare/v3.2.1...v3.2.2) (2018-02-22)
+
+
+### Bug Fixes
+
+* Associate docker icon with `.dockerignore` ([832934e](https://github.com/ihodev/a-file-icon/commit/832934e)), closes [#103](https://github.com/ihodev/a-file-icon/issues/103)
+* Associate gear icon with `.jshintrc` ([6000a3d](https://github.com/ihodev/a-file-icon/commit/6000a3d)), closes [#113](https://github.com/ihodev/a-file-icon/issues/113)
+* Associate lock icon with `Berksfile.lock` ([13a41f9](https://github.com/ihodev/a-file-icon/commit/13a41f9))
+* Associate pug icon with pug-lint ([f86616a](https://github.com/ihodev/a-file-icon/commit/f86616a)), closes [#105](https://github.com/ihodev/a-file-icon/issues/105)
+* Associate webpack icon with `webpack.mix.js` ([6d8fb4c](https://github.com/ihodev/a-file-icon/commit/6d8fb4c)), closes [#115](https://github.com/ihodev/a-file-icon/issues/115)
+* Disable autoupdating of the SL settings ([2daa81d](https://github.com/ihodev/a-file-icon/commit/2daa81d)), closes [#158](https://github.com/ihodev/a-file-icon/issues/158)
+
+
+
 <a name="3.2.1"></a>
 ## [3.2.1](https://github.com/ihodev/a-file-icon/compare/v3.2.0...v3.2.1) (2017-04-13)
 
@@ -6,7 +21,7 @@
 
 * Associate Heroku icon with `.buildpacks` ([1abd271](https://github.com/ihodev/a-file-icon/commit/1abd271)), closes [#102](https://github.com/ihodev/a-file-icon/issues/102)
 * Associate tex-icon with biblatex (.bib) files ([9c9b2da](https://github.com/ihodev/a-file-icon/commit/9c9b2da))
-* Fix black icons on `Adaptive` theme ([9b2381b](https://github.com/ihodev/a-file-icon/commit/9b2381b))
+* Fix black icons on `Adaptive` theme ([9b2381b](https://github.com/ihodev/a-file-icon/commit/9b2381b)), closes [#108](https://github.com/ihodev/a-file-icon/issues/108)
 * Fix icon rendering on Windows (ST 3127+) ([acfd251](https://github.com/ihodev/a-file-icon/commit/acfd251)), closes [#108](https://github.com/ihodev/a-file-icon/issues/108)
 * Make aliases hidden ([0aa9954](https://github.com/ihodev/a-file-icon/commit/0aa9954))
 
@@ -42,15 +57,15 @@
 ### Features
 
 * Add a video icon ([1166731](https://github.com/ihodev/a-file-icon/commit/1166731)), closes [#86](https://github.com/ihodev/a-file-icon/issues/86)
-* Add Adobe After Effects icon ([0a92a65](https://github.com/ihodev/a-file-icon/commit/0a92a65))
-* Add Adobe InDesign icon ([2db1a66](https://github.com/ihodev/a-file-icon/commit/2db1a66))
+* Add Adobe After Effects icon ([0a92a65](https://github.com/ihodev/a-file-icon/commit/0a92a65)), closes [#84](https://github.com/ihodev/a-file-icon/issues/84)
+* Add Adobe InDesign icon ([2db1a66](https://github.com/ihodev/a-file-icon/commit/2db1a66)), closes [#84](https://github.com/ihodev/a-file-icon/issues/84)
 * Add Adobe Premiere Pro icon ([d1198e6](https://github.com/ihodev/a-file-icon/commit/d1198e6)), closes [#84](https://github.com/ihodev/a-file-icon/issues/84)
 * Add an audio icon ([7c6c58e](https://github.com/ihodev/a-file-icon/commit/7c6c58e)), closes [#85](https://github.com/ihodev/a-file-icon/issues/85)
 * Add Microsoft Access icon ([e4aef71](https://github.com/ihodev/a-file-icon/commit/e4aef71)), closes [#83](https://github.com/ihodev/a-file-icon/issues/83)
-* Add Microsoft Excel icon ([5d8fe97](https://github.com/ihodev/a-file-icon/commit/5d8fe97))
-* Add Microsoft OneNote icon ([bf31913](https://github.com/ihodev/a-file-icon/commit/bf31913))
-* Add Microsoft PowerPoint icon ([c684b4f](https://github.com/ihodev/a-file-icon/commit/c684b4f))
-* Add Microsoft Word icon ([a53fecf](https://github.com/ihodev/a-file-icon/commit/a53fecf))
+* Add Microsoft Excel icon ([5d8fe97](https://github.com/ihodev/a-file-icon/commit/5d8fe97)), closes [#83](https://github.com/ihodev/a-file-icon/issues/83)
+* Add Microsoft OneNote icon ([bf31913](https://github.com/ihodev/a-file-icon/commit/bf31913)), closes [#83](https://github.com/ihodev/a-file-icon/issues/83)
+* Add Microsoft PowerPoint icon ([c684b4f](https://github.com/ihodev/a-file-icon/commit/c684b4f)), closes [#83](https://github.com/ihodev/a-file-icon/issues/83)
+* Add Microsoft Word icon ([a53fecf](https://github.com/ihodev/a-file-icon/commit/a53fecf)), closes [#83](https://github.com/ihodev/a-file-icon/issues/83)
 * Add option to change sidebar row padding ([d4c2b94](https://github.com/ihodev/a-file-icon/commit/d4c2b94)), closes [#80](https://github.com/ihodev/a-file-icon/issues/80)
 
 
@@ -117,9 +132,9 @@
 * Add font icon for woff2 ([30b2df7](https://github.com/ihodev/a-file-icon/commit/30b2df7))
 * Add gulp icon for gulpfile.babel.js ([36b62bb](https://github.com/ihodev/a-file-icon/commit/36b62bb)), closes [#19](https://github.com/ihodev/a-file-icon/issues/19)
 * Add the archive icon for *.saz ([26c06fd](https://github.com/ihodev/a-file-icon/commit/26c06fd))
-* Add the gulpfile icon for `gulpfile.coffee` ([f5fa1e3](https://github.com/ihodev/a-file-icon/commit/f5fa1e3))
+* Add the gulpfile icon for `gulpfile.coffee` ([f5fa1e3](https://github.com/ihodev/a-file-icon/commit/f5fa1e3)), closes [#41](https://github.com/ihodev/a-file-icon/issues/41)
 * Add the postcss icon for config files ([09f1c00](https://github.com/ihodev/a-file-icon/commit/09f1c00))
-* Add the ruby icon for rvm and rspec ([#43](https://github.com/ihodev/a-file-icon/issues/43)) ([29d29ea](https://github.com/ihodev/a-file-icon/commit/29d29ea))
+* Add the ruby icon for rvm and rspec ([#43](https://github.com/ihodev/a-file-icon/issues/43)) ([29d29ea](https://github.com/ihodev/a-file-icon/commit/29d29ea)), closes [#41](https://github.com/ihodev/a-file-icon/issues/41)
 * Get package name on the fly ([0969a49](https://github.com/ihodev/a-file-icon/commit/0969a49))
 * Make .stylelintrc icon single colored ([534e6e8](https://github.com/ihodev/a-file-icon/commit/534e6e8))
 * Use ESLint icon for .eslintignore ([84b96b5](https://github.com/ihodev/a-file-icon/commit/84b96b5)), closes [#22](https://github.com/ihodev/a-file-icon/issues/22)
@@ -130,9 +145,9 @@
 * Add .log icon ([66d9144](https://github.com/ihodev/a-file-icon/commit/66d9144)), closes [#15](https://github.com/ihodev/a-file-icon/issues/15)
 * Add a config icon ([0ff5ba9](https://github.com/ihodev/a-file-icon/commit/0ff5ba9)), closes [#14](https://github.com/ihodev/a-file-icon/issues/14)
 * Add a csv icon ([ace14aa](https://github.com/ihodev/a-file-icon/commit/ace14aa)), closes [#13](https://github.com/ihodev/a-file-icon/issues/13)
-* Add a icon for composer ([ae1b583](https://github.com/ihodev/a-file-icon/commit/ae1b583))
-* Add a icon for NodeJS ([7c138b4](https://github.com/ihodev/a-file-icon/commit/7c138b4))
-* Add a lock icon ([d6315b8](https://github.com/ihodev/a-file-icon/commit/d6315b8))
+* Add a icon for composer ([ae1b583](https://github.com/ihodev/a-file-icon/commit/ae1b583)), closes [#41](https://github.com/ihodev/a-file-icon/issues/41)
+* Add a icon for NodeJS ([7c138b4](https://github.com/ihodev/a-file-icon/commit/7c138b4)), closes [#41](https://github.com/ihodev/a-file-icon/issues/41)
+* Add a lock icon ([d6315b8](https://github.com/ihodev/a-file-icon/commit/d6315b8)), closes [#41](https://github.com/ihodev/a-file-icon/issues/41)
 * Add a nginx icon ([6d4e57b](https://github.com/ihodev/a-file-icon/commit/6d4e57b)), closes [#33](https://github.com/ihodev/a-file-icon/issues/33)
 * Add a nsis icon ([1a417c8](https://github.com/ihodev/a-file-icon/commit/1a417c8)), closes [#18](https://github.com/ihodev/a-file-icon/issues/18)
 * Add a webpack icon ([7932f69](https://github.com/ihodev/a-file-icon/commit/7932f69)), closes [#8](https://github.com/ihodev/a-file-icon/issues/8)

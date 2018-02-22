@@ -320,6 +320,14 @@
         ],
         "base": "source.yaml",
         "scope": "source.yaml.docker"
+      },
+      {
+        "name": "Shell Script (Docker)",
+        "extensions": [
+          ".dockerignore"
+        ],
+        "base": "source.shell",
+        "scope": "source.shell.docker"
       }
     ]
   },
@@ -739,7 +747,8 @@
         "name": "YAML (Lock)",
         "linter": "yaml",
         "extensions": [
-          "Gemfile.lock"
+          "Gemfile.lock",
+          "Berksfile.lock"
         ],
         "base": "source.yaml",
         "scope": "source.yaml.lock"
@@ -1075,6 +1084,27 @@
         "name": "Pug",
         "scope": "text.pug"
       }
+    ],
+    "aliases": [
+      {
+        "name": "JSON (Puglint)",
+        "linter": "json",
+        "extensions": [
+          ".pug-lintrc",
+          ".pug-lintrc.json"
+        ],
+        "base": "source.json",
+        "scope": "source.json.puglint"
+      },
+      {
+        "name": "JavaScript (Puglint)",
+        "linter": "javascript",
+        "extensions": [
+          ".pug-lintrc.js"
+        ],
+        "base": "source.js",
+        "scope": "source.js.puglint"
+      }
     ]
   },
   "file_type_puppet": {
@@ -1208,7 +1238,8 @@
         "name": "JSON (Settings)",
         "linter": "json",
         "extensions": [
-          "jsbeautifyrc"
+          ".jshintrc",
+          ".jsbeautifyrc"
         ],
         "base": "source.json",
         "scope": "source.json.settings"
@@ -1525,7 +1556,8 @@
         "linter": "javascript",
         "extensions": [
           "webpack.config.js",
-          "webpack.config.babel.js"
+          "webpack.config.babel.js",
+          "webpack.mix.js"
         ],
         "base": "source.js",
         "scope": "source.js.webpack"

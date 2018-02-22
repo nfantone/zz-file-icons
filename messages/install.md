@@ -17,8 +17,8 @@ It's heavily inspired by Atom File Icons.
 ***
 
 1. Please restart Sublime Text for the applied icons to take effect.
-2. The icons for packages provided by the community require to be installed. 
-   E.g. if you want to see SCSS icon you should install one of the SCSS syntax packages.
+2. The icons for packages provided by the community must be installed,
+   i.e., if you want to see SCSS icons you should install one of the SCSS syntax packages.
 
 ***
 
