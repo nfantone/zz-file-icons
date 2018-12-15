@@ -21,6 +21,3 @@ It's heavily inspired by Atom File Icons.
    i.e., if you want to see SCSS icons you should install one of the SCSS syntax packages.
 
 ***
-
-I've put a lot of time and effort into making `A File Icon` awesome. If you love 
-it, you can [buy me a coffee](https://www.patreon.com/ihodev) ☕.
