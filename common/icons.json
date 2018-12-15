@@ -881,6 +881,7 @@
         "name": "JSON (NPM)",
         "linter": "json",
         "extensions": [
+          "package-lock.json",
           "package.json"
         ],
         "base": "source.json",
