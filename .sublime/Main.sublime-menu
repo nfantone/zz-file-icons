@@ -19,10 +19,6 @@
               },
               { "caption": "-" },
               {
-                "caption": "Changelog",
-                "command": "afi_changelog"
-              },
-              {
                 "caption": "Environment",
                 "command": "afi_environment"
               }

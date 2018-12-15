@@ -1,9 +1,5 @@
 [
   {
-    "caption": "A File Icon: Changelog",
-    "command": "afi_changelog"
-  },
-  {
     "caption": "A File Icon: Clean Patches",
     "command": "afi_clean"
   },
