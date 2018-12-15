@@ -8,5 +8,4 @@ file_extensions:
   - aet
 scope: text.plain.ae
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []

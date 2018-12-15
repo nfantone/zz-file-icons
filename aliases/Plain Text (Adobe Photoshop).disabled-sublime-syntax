@@ -8,5 +8,4 @@ file_extensions:
   - psd
 scope: text.plain.ps
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []

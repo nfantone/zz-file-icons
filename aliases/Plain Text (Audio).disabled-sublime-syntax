@@ -22,5 +22,4 @@ file_extensions:
   - wma
 scope: text.plain.audio
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []

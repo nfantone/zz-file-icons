@@ -7,5 +7,4 @@ file_extensions:
   - sketch
 scope: text.plain.sketch
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []

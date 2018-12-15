@@ -16,5 +16,4 @@ file_extensions:
   - zip
 scope: text.plain.archive
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []

@@ -12,5 +12,4 @@ file_extensions:
   - idml
 scope: text.plain.indesign
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []

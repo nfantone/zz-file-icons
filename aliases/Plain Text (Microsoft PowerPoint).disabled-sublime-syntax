@@ -10,5 +10,4 @@ file_extensions:
   - ppsx
 scope: text.plain.powerpoint
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []

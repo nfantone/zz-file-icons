@@ -21,5 +21,4 @@ file_extensions:
   - ogm
 scope: text.plain.video
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []

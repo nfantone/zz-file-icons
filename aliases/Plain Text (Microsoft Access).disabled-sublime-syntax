@@ -19,5 +19,4 @@ file_extensions:
   - laccdb
 scope: text.plain.access
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []

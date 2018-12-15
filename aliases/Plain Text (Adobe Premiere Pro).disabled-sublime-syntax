@@ -9,5 +9,4 @@ file_extensions:
   - psq
 scope: text.plain.premiere
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []

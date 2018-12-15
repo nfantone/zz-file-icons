@@ -7,5 +7,4 @@ file_extensions:
   - one
 scope: text.plain.onenote
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []

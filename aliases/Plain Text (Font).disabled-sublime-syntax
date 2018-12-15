@@ -11,5 +11,4 @@ file_extensions:
   - woff2
 scope: text.plain.font
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []

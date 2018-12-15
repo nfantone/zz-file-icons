@@ -13,5 +13,4 @@ file_extensions:
   - wri
 scope: text.plain.word
 contexts:
-  main:
-    - include: scope:text.plain
+  main: []
