@@ -2,11 +2,11 @@
 <plist version="1.0">
   <dict>
     <key>scope</key>
-    <string>source.c++, source.objc++</string>
+    <string>source</string>
     <key>settings</key>
     <dict>
       <key>icon</key>
-      <string>file_type_cpp</string>
+      <string>file_type_source</string>
     </dict>
   </dict>
 </plist>
