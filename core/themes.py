@@ -7,8 +7,6 @@ import sublime_plugin
 from collections import OrderedDict
 
 from ..common import settings
-from ..common.templates.theme import INDENT
-from ..common.templates.theme import TEMPLATE as THEME
 from ..common.utils import path
 from ..common.utils import icons
 from ..common.utils.logging import log, dump, warning
@@ -18,6 +16,72 @@ COLOR = "{0}\"layer0.tint\": {1}{2}"
 OPACITY = "{0}\"layer0.opacity\": {1}{2}"
 SIZE = "{0}\"content_margin\": [{1}, {1}]{2}"
 ROW_PADDING = "{0}\"row_padding\": {1}{2}"
+
+if int(sublime.version()) >= 3180:
+    INDENT = " " * 8
+    THEME = """{
+    "rules": [
+
+      // Sidebar Row Padding
+
+      {
+        "class": "sidebar_tree"%(row_padding)s
+      },
+
+      // Sidebar File Icons - Default
+
+      {
+        "class": "icon_file_type"%(color)s%(opacity)s%(size)s
+      },
+
+      // Sidebar File Icons - Hovered
+
+      {
+        "class": "icon_file_type"%(color_on_hover)s
+        "parents": [{"class": "tree_row", "attributes": ["hover"]}]%(opacity_on_hover)s
+      },
+
+      // Sidebar File Icons - Selected
+
+      {
+        "class": "icon_file_type"%(color_on_select)s
+        "parents": [{"class": "tree_row", "attributes": ["selected"]}]%(opacity_on_select)s
+      }
+    ]
+  }
+  """
+
+else:
+  INDENT = " " * 4
+  THEME = """[
+
+    // Sidebar Row Padding
+
+    {
+      "class": "sidebar_tree"%(row_padding)s
+    },
+
+    // Sidebar File Icons - Default
+
+    {
+      "class": "icon_file_type"%(color)s%(opacity)s%(size)s
+    },
+
+    // Sidebar File Icons - Hovered
+
+    {
+      "class": "icon_file_type"%(color_on_hover)s
+      "parents": [{"class": "tree_row", "attributes": ["hover"]}]%(opacity_on_hover)s
+    },
+
+    // Sidebar File Icons - Selected
+
+    {
+      "class": "icon_file_type"%(color_on_select)s
+      "parents": [{"class": "tree_row", "attributes": ["selected"]}]%(opacity_on_select)s
+    }
+  ]
+  """
 
 
 def _patch_general(themes, dest, isettings):
