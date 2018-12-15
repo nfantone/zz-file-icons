@@ -9,7 +9,6 @@ if int(sublime.version()) >= 3114:
     from .core import aliases
 
     from .common.utils.environment import AfiEnvironmentCommand
-    from .common.utils.reloader import AfiReloadListener
     from .common.utils.reloader import AfiReloadCommand
     from .common.utils.cleaning import AfiCleanCommand
     from .common.utils.cleaning import AfiRevertCommand

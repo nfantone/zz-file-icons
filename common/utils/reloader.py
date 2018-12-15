@@ -255,26 +255,6 @@ class FilteringImportHook:
             return self
 
 
-class AfiReloadListener(sublime_plugin.EventListener):
-    def on_post_save(self, view):
-        file_path = view.file_name()
-
-        if not file_path.endswith(".py"):
-            return
-
-        file_base = os.path.basename(file_path)
-
-        if os.sep == "\\":
-            file_path = file_path.replace("\\", "/")
-
-        file_res = "Packages" + file_path[
-                   file_path.find("/" + settings.PACKAGE_NAME):
-        ]
-
-        if file_res in sublime.find_resources(file_base):
-            reload_plugin()
-
-
 class AfiReloadCommand(sublime_plugin.ApplicationCommand):
     def run(self):
         reload_plugin()
