@@ -3,7 +3,7 @@
 [![Star on GitHub][img-stars]][stars]
 [![Join the chat at Sublime Forum][img-forum]][forum]
 
-This package adds file-specific icons to Sublime Text for improved visual grepping. It's heavily inspired by [Atom File Icons][atom-file-icons].
+This package adds file-specific icons to Sublime Text for improved visual grepping. It's heavily inspired by [Atom File Icons](https://github.com/file-icons/atom).
 
 Its aims are:
 
