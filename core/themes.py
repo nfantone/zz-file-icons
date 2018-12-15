@@ -7,6 +7,7 @@ import sublime_plugin
 from collections import OrderedDict
 
 from ..common import settings
+from ..common.templates.theme import INDENT
 from ..common.templates.theme import TEMPLATE as THEME
 from ..common.utils import path
 from ..common.utils import icons
@@ -36,41 +37,39 @@ def _patch_general(themes, dest, isettings):
 
         with open(theme_dest, "w") as t:
             t.write(THEME % {
-                "name": theme_name,
 
                 "color": COLOR.format(
-                    ",\n    ", color, ""
+                    ",\n" + INDENT, color, ""
                 ) if color else "",
 
                 "color_on_hover": COLOR.format(
-                    ",\n    ", color_on_hover, ","
+                    ",\n" + INDENT, color_on_hover, ","
                 ) if color_on_hover else ",",
 
                 "color_on_select": COLOR.format(
-                    ",\n    ", color_on_select, ","
+                    ",\n" + INDENT, color_on_select, ","
                 ) if color_on_select else ",",
 
                 "opacity": OPACITY.format(
-                    ",\n    ", opacity, ","
-                ) if opacity else ",\n    ",
+                    ",\n" + INDENT, opacity, ","
+                ) if opacity else ",\n" + INDENT,
 
                 "opacity_on_hover": OPACITY.format(
-                    ",\n    ", opacity_on_hover, ""
+                    ",\n" + INDENT, opacity_on_hover, ""
                 ) if opacity_on_hover else "",
 
                 "opacity_on_select": OPACITY.format(
-                    ",\n    ", opacity_on_select, ""
+                    ",\n" + INDENT, opacity_on_select, ""
                 ) if opacity_on_select else "",
 
                 "size": SIZE.format(
-                    "\n    ", size, ""
+                    "\n" + INDENT, size, ""
                 ) if size else "",
 
                 "row_padding": ROW_PADDING.format(
-                    ",\n    ", row_padding, ""
+                    ",\n" + INDENT, row_padding, ""
                 ) if row_padding else ""
             })
-            t.close()
 
 
 def _patch_specific(theme, dest, isettings):
@@ -84,18 +83,17 @@ def _patch_specific(theme, dest, isettings):
 
     with open(theme_dest, "w") as t:
         t.write(THEME % {
-            "name": theme_name,
 
             "color": COLOR.format(
-                ",\n    ", color, ""
+                ",\n" + INDENT, color, ""
             ) if color else "",
 
             "color_on_hover": COLOR.format(
-                ",\n    ", color_on_hover, ","
+                ",\n" + INDENT, color_on_hover, ","
             ) if color_on_hover else ",",
 
             "color_on_select": COLOR.format(
-                ",\n    ", color_on_select, ","
+                ",\n" + INDENT, color_on_select, ","
             ) if color_on_select else ",",
 
             "opacity": "",
@@ -104,15 +102,16 @@ def _patch_specific(theme, dest, isettings):
             "size": "",
             "row_padding": ""
         })
-        t.close()
 
 
 def _clean_patches(patches):
     log("Clearing old unnecessary patches")
     try:
         for patch in patches:
-            if os.path.exists(patch):
+            try:
                 os.remove(patch)
+            except FileNotFoundError:
+                pass
     except Exception as error:
         log("Error during patch cleaning")
         dump(error)
