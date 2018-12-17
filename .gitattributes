@@ -14,3 +14,4 @@
 /package.json       export-ignore
 /tests/             export-ignore
 /common/assets/     export-ignore
+/common/*.json      export-ignore

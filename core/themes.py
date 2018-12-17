@@ -7,7 +7,6 @@ import sublime_plugin
 from collections import OrderedDict
 
 from ..common import settings
-from ..common.templates.theme import TEMPLATE as THEME
 from ..common.utils import path
 from ..common.utils import icons
 from ..common.utils.logging import log, dump, warning
@@ -17,6 +16,72 @@ COLOR = "{0}\"layer0.tint\": {1}{2}"
 OPACITY = "{0}\"layer0.opacity\": {1}{2}"
 SIZE = "{0}\"content_margin\": [{1}, {1}]{2}"
 ROW_PADDING = "{0}\"row_padding\": {1}{2}"
+
+if int(sublime.version()) >= 3180:
+    INDENT = " " * 8
+    THEME = """{
+    "rules": [
+
+      // Sidebar Row Padding
+
+      {
+        "class": "sidebar_tree"%(row_padding)s
+      },
+
+      // Sidebar File Icons - Default
+
+      {
+        "class": "icon_file_type"%(color)s%(opacity)s%(size)s
+      },
+
+      // Sidebar File Icons - Hovered
+
+      {
+        "class": "icon_file_type"%(color_on_hover)s
+        "parents": [{"class": "tree_row", "attributes": ["hover"]}]%(opacity_on_hover)s
+      },
+
+      // Sidebar File Icons - Selected
+
+      {
+        "class": "icon_file_type"%(color_on_select)s
+        "parents": [{"class": "tree_row", "attributes": ["selected"]}]%(opacity_on_select)s
+      }
+    ]
+  }
+  """
+
+else:
+  INDENT = " " * 4
+  THEME = """[
+
+    // Sidebar Row Padding
+
+    {
+      "class": "sidebar_tree"%(row_padding)s
+    },
+
+    // Sidebar File Icons - Default
+
+    {
+      "class": "icon_file_type"%(color)s%(opacity)s%(size)s
+    },
+
+    // Sidebar File Icons - Hovered
+
+    {
+      "class": "icon_file_type"%(color_on_hover)s
+      "parents": [{"class": "tree_row", "attributes": ["hover"]}]%(opacity_on_hover)s
+    },
+
+    // Sidebar File Icons - Selected
+
+    {
+      "class": "icon_file_type"%(color_on_select)s
+      "parents": [{"class": "tree_row", "attributes": ["selected"]}]%(opacity_on_select)s
+    }
+  ]
+  """
 
 
 def _patch_general(themes, dest, isettings):
@@ -36,41 +101,39 @@ def _patch_general(themes, dest, isettings):
 
         with open(theme_dest, "w") as t:
             t.write(THEME % {
-                "name": theme_name,
 
                 "color": COLOR.format(
-                    ",\n    ", color, ""
+                    ",\n" + INDENT, color, ""
                 ) if color else "",
 
                 "color_on_hover": COLOR.format(
-                    ",\n    ", color_on_hover, ","
+                    ",\n" + INDENT, color_on_hover, ","
                 ) if color_on_hover else ",",
 
                 "color_on_select": COLOR.format(
-                    ",\n    ", color_on_select, ","
+                    ",\n" + INDENT, color_on_select, ","
                 ) if color_on_select else ",",
 
                 "opacity": OPACITY.format(
-                    ",\n    ", opacity, ","
-                ) if opacity else ",\n    ",
+                    ",\n" + INDENT, opacity, ","
+                ) if opacity else ",\n" + INDENT,
 
                 "opacity_on_hover": OPACITY.format(
-                    ",\n    ", opacity_on_hover, ""
+                    ",\n" + INDENT, opacity_on_hover, ""
                 ) if opacity_on_hover else "",
 
                 "opacity_on_select": OPACITY.format(
-                    ",\n    ", opacity_on_select, ""
+                    ",\n" + INDENT, opacity_on_select, ""
                 ) if opacity_on_select else "",
 
                 "size": SIZE.format(
-                    "\n    ", size, ""
+                    "\n" + INDENT, size, ""
                 ) if size else "",
 
                 "row_padding": ROW_PADDING.format(
-                    ",\n    ", row_padding, ""
+                    ",\n" + INDENT, row_padding, ""
                 ) if row_padding else ""
             })
-            t.close()
 
 
 def _patch_specific(theme, dest, isettings):
@@ -84,18 +147,17 @@ def _patch_specific(theme, dest, isettings):
 
     with open(theme_dest, "w") as t:
         t.write(THEME % {
-            "name": theme_name,
 
             "color": COLOR.format(
-                ",\n    ", color, ""
+                ",\n" + INDENT, color, ""
             ) if color else "",
 
             "color_on_hover": COLOR.format(
-                ",\n    ", color_on_hover, ","
+                ",\n" + INDENT, color_on_hover, ","
             ) if color_on_hover else ",",
 
             "color_on_select": COLOR.format(
-                ",\n    ", color_on_select, ","
+                ",\n" + INDENT, color_on_select, ","
             ) if color_on_select else ",",
 
             "opacity": "",
@@ -104,15 +166,16 @@ def _patch_specific(theme, dest, isettings):
             "size": "",
             "row_padding": ""
         })
-        t.close()
 
 
 def _clean_patches(patches):
     log("Clearing old unnecessary patches")
     try:
         for patch in patches:
-            if os.path.exists(patch):
+            try:
                 os.remove(patch)
+            except FileNotFoundError:
+                pass
     except Exception as error:
         log("Error during patch cleaning")
         dump(error)
@@ -163,10 +226,9 @@ def get_installed(logging=True):
     return installed_themes
 
 
-def get_customizable():
+def get_customizable(installed_themes):
     log("Getting the list of theme packages with customization support")
 
-    installed_themes = get_installed(logging=False)
     customizable_themes = []
 
     theme_res = sublime.find_resources(".supports-a-file-icon-customization")
@@ -187,7 +249,7 @@ class AfiPatchThemesCommand(sublime_plugin.ApplicationCommand):
         log("Preparing to patch")
 
         installed_themes = get_installed()
-        customizable_themes = get_customizable()
+        customizable_themes = get_customizable(installed_themes)
         icons_settings = settings.icons()
         force_mode = settings.package().get("force_mode")
 

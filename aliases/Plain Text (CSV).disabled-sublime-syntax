@@ -1,0 +1,10 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: CSV Misc
+hidden: true
+file_extensions:
+  - csv
+scope: text.csv
+contexts:
+  main: []

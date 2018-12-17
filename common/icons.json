@@ -271,6 +271,16 @@
   },
   "file_type_csv": {
     "color": "green",
+    "aliases":[
+      {
+        "name": "Plain Text (CSV)",
+        "extensions": [
+          "csv"
+        ],
+        "base": "text.plain",
+        "scope": "text.plain.csv"
+      }
+    ],
     "syntaxes": [
       {
         "name": "Advanced CSV",
@@ -279,6 +289,15 @@
       {
         "name": "CSV Misc",
         "scope": "text.csv"
+      }
+    ]
+  },
+  "file_type_cython": {
+    "color": "yellow",
+    "syntaxes": [
+      {
+        "name": "Cython",
+        "scope": "source.cython"
       }
     ]
   },
@@ -300,6 +319,15 @@
       {
         "name": "D",
         "scope": "source.d"
+      }
+    ]
+  },
+  "file_type_diff": {
+    "color": "yellow",
+    "syntaxes": [
+      {
+        "name": "Diff",
+        "scope": "source.diff"
       }
     ]
   },
@@ -671,6 +699,10 @@
       {
         "name": "JSX",
         "scope": "source.js.jsx"
+      },
+      {
+        "name": "JS Custom - React",
+        "scope": "source.js.react"
       }
     ]
   },
@@ -881,6 +913,7 @@
         "name": "JSON (NPM)",
         "linter": "json",
         "extensions": [
+          "package-lock.json",
           "package.json"
         ],
         "base": "source.json",
@@ -1539,6 +1572,23 @@
       }
     ]
   },
+  "file_type_visualstudio": {
+    "color": "purple",
+    "aliases": [
+      {
+        "name": "XML (Visual Studio)",
+        "extensions": [
+          "csproj",
+          "vsproj",
+          "ruleset",
+          "settings",
+          "targets"
+        ],
+        "base": "source.xml",
+        "scope": "source.xml.visualstudio"
+      }
+    ]
+  },
   "file_type_vue": {
     "color": "cyan",
     "syntaxes": [
@@ -1599,6 +1649,15 @@
         ],
         "base": "text.plain",
         "scope": "text.plain.word"
+      }
+    ]
+  },
+  "file_type_xml": {
+    "color": "blue",
+    "syntaxes": [
+      {
+        "name": "XML",
+        "scope": "text.xml"
       }
     ]
   },

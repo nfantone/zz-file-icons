@@ -77,7 +77,7 @@ def _copy_general():
 def _copy_specific():
     log("Checking theme specific icons")
 
-    customizable_themes = themes.get_customizable()
+    customizable_themes = themes.get_customizable(themes.get_installed())
     general_path = path.get_overlay_patches_general()
     specific_path = path.get_overlay_patches_specific()
 
