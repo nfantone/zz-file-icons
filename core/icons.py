@@ -1,9 +1,9 @@
-import json
 import os
 import shutil
-import sublime
 import tempfile
 import zipfile
+
+import sublime
 
 from ..common import settings
 from ..common.utils import path

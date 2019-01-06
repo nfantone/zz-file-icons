@@ -2,7 +2,7 @@
 <plist version="1.0">
   <dict>
     <key>scope</key>
-    <string>text.git, source.git, source.shell.git</string>
+    <string>text.git, source.git, source.shell.git, text.git.keep</string>
     <key>settings</key>
     <dict>
       <key>icon</key>

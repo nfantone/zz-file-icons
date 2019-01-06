@@ -4,14 +4,15 @@
 
 # Files and directories with the attribute export-ignore won’t be added to
 # archive files. See http://git-scm.com/docs/gitattributes for details.
+/.github/           export-ignore
+/common/assets/     export-ignore
+/common/templates/  export-ignore
+/common/*.json      export-ignore
+/tests/             export-ignore
 /.editorconfig      export-ignore
 /.eslintrc.yml      export-ignore
 /.flake8            export-ignore
 /.gitattributes     export-ignore
-/.github/           export-ignore
 /.gitignore         export-ignore
 /gulpfile.js        export-ignore
 /package.json       export-ignore
-/tests/             export-ignore
-/common/assets/     export-ignore
-/common/*.json      export-ignore

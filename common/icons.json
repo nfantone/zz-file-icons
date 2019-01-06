@@ -218,6 +218,20 @@
       }
     ]
   },
+  "file_type_cmake": {
+    "color": "blue",
+    "syntaxes": [
+      {
+        "name": "CMake",
+        "scope": "source.cmake"
+      },
+      {
+        "name": "CMakeEditor",
+        "scope": "source.cmakeeditor"
+      }
+
+    ]
+  },
   "file_type_coffeescript": {
     "color": "orange",
     "syntaxes": [
@@ -248,6 +262,10 @@
       {
         "name": "C++",
         "scope": "source.c++"
+      },
+      {
+        "name": "Objective C++",
+        "scope": "source.objc++"
       }
     ]
   },
@@ -278,17 +296,13 @@
           "csv"
         ],
         "base": "text.plain",
-        "scope": "text.plain.csv"
+        "scope": "text.csv"
       }
     ],
     "syntaxes": [
       {
         "name": "Advanced CSV",
         "scope": "text.advanced_csv"
-      },
-      {
-        "name": "CSV Misc",
-        "scope": "text.csv"
       }
     ]
   },
@@ -312,6 +326,15 @@
   },
   "file_type_default": {
     "color": "graphite"
+  },
+  "file_type_delphi": {
+    "color": "red",
+    "syntaxes": [
+      {
+        "name": "Pascal",
+        "scope": "source.pascal"
+      }
+    ]
   },
   "file_type_dlang": {
     "color": "red",
@@ -496,23 +519,26 @@
     "color": "orange",
     "syntaxes": [
       {
-        "name": "GitSyntaxes",
+        "name": "Git Formats",
         "scope": "text.git"
       },
       {
         "name": "Git Misc Packages",
         "scope": "source.git"
+      },
+      {
+        "name": "Shell Script (Git)",
+        "scope": "source.shell.git"
       }
     ],
     "aliases": [
       {
-        "name": "Shell Script (Git)",
+        "name": "Git Keep",
         "extensions": [
-          ".gitignore",
           ".gitkeep"
         ],
-        "base": "source.shell",
-        "scope": "source.shell.git"
+        "base": "text.plain",
+        "scope": "text.git.keep"
       }
     ]
   },
@@ -1414,6 +1440,7 @@
         "linter": "json",
         "extensions": [
           ".no-sublime-package",
+          "sublime-color-scheme",
           "sublime-commands",
           "sublime-menu",
           "sublime-project",
@@ -1425,6 +1452,14 @@
         ],
         "base": "source.json",
         "scope": "source.json.sublime"
+      },
+      {
+        "name": "YAML (Sublime)",
+        "extensions": [
+          "sublime-syntax"
+        ],
+        "base": "source.yaml",
+        "scope": "source.yaml.sublime"
       }
     ]
   },
@@ -1523,6 +1558,23 @@
       }
     ]
   },
+  "file_type_vhdl": {
+    "color": "blue",
+    "syntaxes": [
+      {
+        "name": "VHDL",
+        "scope": "source.vhdl"
+      },
+      {
+        "name": "SystemVerilog",
+        "scope": "source.systemverilog"
+      },
+      {
+        "name": "Verilog",
+        "scope": "source.verilog"
+      }
+    ]
+  },
   "file_type_video": {
     "color": "purple",
     "aliases":[
@@ -1584,8 +1636,8 @@
           "settings",
           "targets"
         ],
-        "base": "source.xml",
-        "scope": "source.xml.visualstudio"
+        "base": "text.xml",
+        "scope": "text.xml.visualstudio"
       }
     ]
   },
@@ -1649,15 +1701,6 @@
         ],
         "base": "text.plain",
         "scope": "text.plain.word"
-      }
-    ]
-  },
-  "file_type_xml": {
-    "color": "blue",
-    "syntaxes": [
-      {
-        "name": "XML",
-        "scope": "text.xml"
       }
     ]
   },

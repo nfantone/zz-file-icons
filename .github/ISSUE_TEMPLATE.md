@@ -1,7 +1,7 @@
 <!-- BEFORE REPORTING A NEW ISSUE (FOR BUGS) -->
 
 <!--
-0. Look at https://github.com/ihodev/a-file-icon/labels/known%20issue
+0. Look at https://github.com/SublimeText/AFileIcon/labels/known%20issue
 
 1. Try to restart Sublime Text
 

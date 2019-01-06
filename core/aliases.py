@@ -1,9 +1,10 @@
 import os
 import shutil
-import sublime
-import sublime_plugin
 import tempfile
 import zipfile
+
+import sublime
+import sublime_plugin
 
 from ..common import settings
 from ..common.utils import path

@@ -4,6 +4,11 @@ The icons for packages provided by the community must be installed, i.e., if you
 
 This file contains a list of possible packages you may need to install to see their respective icons.
 
+## CMake
+
+- [CMake](https://packagecontrol.io/packages/CMake)
+- [CMakeEditor](https://packagecontrol.io/packages/CMakeEditor)
+
 ## CoffeeScript
 
 - [Better CoffeeScript](https://packagecontrol.io/packages/Better%20CoffeeScript)
@@ -20,6 +25,11 @@ This file contains a list of possible packages you may need to install to see th
 ## Dart
 
 - [Dart](https://packagecontrol.io/packages/Dart)
+
+## Delphi
+
+- [Pascal](https://packagecontrol.io/packages/Pascal)
+- [Object Pascal](https://packagecontrol.io/packages/Object%20Pascal)
 
 ## Docker
 
@@ -60,6 +70,7 @@ This file contains a list of possible packages you may need to install to see th
 ## JavaScript
 
 - [AngularJS](https://packagecontrol.io/packages/AngularJS)
+- [JS Custom](https://packagecontrol.io/packages/JSCustom)
 - [JSX](https://packagecontrol.io/packages/JSX)
 
 ## Julia
@@ -104,6 +115,10 @@ This file contains a list of possible packages you may need to install to see th
 - [NSIS](https://packagecontrol.io/packages/NSIS)
 - [BridleNSIS](https://packagecontrol.io/packages/BridleNSIS)
 
+## PackageDev
+
+- [PackageDev](https://packagecontrol.io/packages/PackageDev)
+
 ## PHP
 
 - [Laravel Blade Highlighter](https://packagecontrol.io/packages/Laravel%20Blade%20Highlighter)
@@ -137,7 +152,6 @@ This file contains a list of possible packages you may need to install to see th
 ## Settings
 
 - [ApacheConf](https://packagecontrol.io/packages/ApacheConf.tmLanguage)
-- [EditorConfig](https://packagecontrol.io/packages/EditorConfig)
 - [INI](https://packagecontrol.io/packages/INI)
 
 ## Shell
@@ -160,7 +174,7 @@ This file contains a list of possible packages you may need to install to see th
 ## Swift
 
 - [Swift](https://packagecontrol.io/packages/Swift)
-- [Swift for F*ing Sublime](https://packagecontrol.io/packages/Swift%20for%20F*ing%20Sublime)
+- [Swift for F\*ing Sublime](https://packagecontrol.io/packages/Swift%20for%20F*ing%20Sublime)
 
 ## TODO
 
@@ -173,6 +187,17 @@ This file contains a list of possible packages you may need to install to see th
 ## TypeScript
 
 - [TypeScript](https://packagecontrol.io/packages/TypeScript)
+
+## Verilog
+
+- [SystemVerilog](https://packagecontrol.io/packages/SystemVerilog)
+- [Verilog](https://packagecontrol.io/packages/Verilog)
+
+## VHDL
+
+- [Smart VHDL](https://packagecontrol.io/packages/Smart%20VHDL)
+- [VHDL](https://packagecontrol.io/packages/VHDL)
+- [VHDL Mode](https://packagecontrol.io/packages/VHDL%20Mode)
 
 ## VIM
 

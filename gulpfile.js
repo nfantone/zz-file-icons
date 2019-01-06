@@ -8,8 +8,6 @@ var gulp = require("gulp");
 var color = require("color");
 var colors = require("colors");
 var path = require("path");
-var conventionalChangelog = require("conventional-changelog");
-var conventionalGithubReleaser = require("conventional-github-releaser");
 var argv = require("yargs").argv;
 var fs = require("fs");
 var merge = require("merge-stream");
@@ -56,8 +54,6 @@ var getIconScope = function(iconOpts) {
 /*
  * Build
  */
-
-gulp.task("build", ["build:settings", "build:icons"]);
 
 // Preferences
 
@@ -189,23 +185,6 @@ gulp.task("media", function() {
     .pipe(gulp.dest("./media"));
 });
 
-gulp.task("changelog", ["changelog:markdown"], function() {
-  return gulp.src("./CHANGELOG.md")
-    .pipe($.markdown())
-    .pipe($.wrap({
-      src: "./common/templates/changelog.html"
-    }))
-    .pipe($.unescapeHtml())
-    .pipe(gulp.dest("./.sublime"));
-});
-
-gulp.task("changelog:markdown", function() {
-  return conventionalChangelog({
-    preset: "angular-ihodev",
-    releaseCount: 0
-  })
-  .pipe(fs.createWriteStream("CHANGELOG.md"));
-});
 
 gulp.task("bump-version", function() {
   return gulp.src("./package.json")
@@ -214,32 +193,3 @@ gulp.task("bump-version", function() {
     .pipe($.if(argv.major, $.bump({ type: "major" })))
     .pipe(gulp.dest("./"));
 });
-
-gulp.task("github-release", function(done) {
-  conventionalGithubReleaser({
-    type: "oauth",
-    token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN
-  }, {
-    preset: "angular"
-  }, done);
-});
-
-/*
- * Watch
- */
-
-gulp.task("watch", function() {
-  $.watch("./common/assets/*.svg", $.batch(function(events, done) {
-    gulp.start("build", done);
-  }));
-
-  $.watch("./common/*.json", $.batch(function(events, done) {
-    gulp.start("build:settings", done);
-  }));
-});
-
-/*
- * Default
- */
-
-gulp.task("default", ["build"]);

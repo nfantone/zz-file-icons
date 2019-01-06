@@ -2,11 +2,11 @@
 <plist version="1.0">
   <dict>
     <key>scope</key>
-    <string>text.xml</string>
+    <string>source.pascal</string>
     <key>settings</key>
     <dict>
       <key>icon</key>
-      <string>file_type_xml</string>
+      <string>file_type_delphi</string>
     </dict>
   </dict>
 </plist>

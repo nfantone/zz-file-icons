@@ -1,6 +1,6 @@
-import json
 import os
 import re
+
 import sublime
 import sublime_plugin
 
@@ -12,160 +12,73 @@ from ..common.utils import icons
 from ..common.utils.logging import log, dump, warning
 
 PATTERN = re.compile(r"^Packages/|\/.*$")
-COLOR = "{0}\"layer0.tint\": {1}{2}"
-OPACITY = "{0}\"layer0.opacity\": {1}{2}"
-SIZE = "{0}\"content_margin\": [{1}, {1}]{2}"
-ROW_PADDING = "{0}\"row_padding\": {1}{2}"
 
-if int(sublime.version()) >= 3180:
-    INDENT = " " * 8
-    THEME = """{
-    "rules": [
 
-      // Sidebar Row Padding
-
-      {
-        "class": "sidebar_tree"%(row_padding)s
-      },
-
-      // Sidebar File Icons - Default
-
-      {
-        "class": "icon_file_type"%(color)s%(opacity)s%(size)s
-      },
-
-      // Sidebar File Icons - Hovered
-
-      {
-        "class": "icon_file_type"%(color_on_hover)s
-        "parents": [{"class": "tree_row", "attributes": ["hover"]}]%(opacity_on_hover)s
-      },
-
-      // Sidebar File Icons - Selected
-
-      {
-        "class": "icon_file_type"%(color_on_select)s
-        "parents": [{"class": "tree_row", "attributes": ["selected"]}]%(opacity_on_select)s
-      }
-    ]
-  }
-  """
-
-else:
-  INDENT = " " * 4
-  THEME = """[
-
-    // Sidebar Row Padding
-
-    {
-      "class": "sidebar_tree"%(row_padding)s
-    },
-
-    // Sidebar File Icons - Default
-
-    {
-      "class": "icon_file_type"%(color)s%(opacity)s%(size)s
-    },
-
-    // Sidebar File Icons - Hovered
-
-    {
-      "class": "icon_file_type"%(color_on_hover)s
-      "parents": [{"class": "tree_row", "attributes": ["hover"]}]%(opacity_on_hover)s
-    },
-
-    // Sidebar File Icons - Selected
-
-    {
-      "class": "icon_file_type"%(color_on_select)s
-      "parents": [{"class": "tree_row", "attributes": ["selected"]}]%(opacity_on_select)s
-    }
-  ]
-  """
+def _patch_icon(attrib, color=None, opacity=None):
+    icon = {"class": "icon_file_type"}
+    if attrib:
+        icon["parents"] = [{"class": "tree_row", "attributes": [attrib]}]
+    if color:
+        icon["layer0.tint"] = color
+    if opacity:
+        icon["layer0.opacity"] = opacity
+    return icon
 
 
 def _patch_general(themes, dest, isettings):
-    color = isettings.get("color", "[255, 255, 255]")
-    color_on_hover = isettings.get("color_on_hover", "")
-    color_on_select = isettings.get("color_on_select", "")
-    opacity = isettings.get("opacity", "")
-    opacity_on_hover = isettings.get("opacity_on_hover", "")
-    opacity_on_select = isettings.get("opacity_on_select", "")
-    size = isettings.get("size", "")
-    row_padding = isettings.get("row_padding", "")
+    theme_content = []
+
+    color = isettings.get("color")
+    opacity = isettings.get("opacity")
+    size = isettings.get("size")
+    row_padding = isettings.get("row_padding")
+    if color or opacity or size or row_padding:
+        icon = _patch_icon(None, color, opacity)
+        if size:
+            icon["content_margin"] = [size, size]
+        if row_padding:
+            icon["row_padding"] = row_padding
+        theme_content.append(icon)
+
+    color = isettings.get("color_on_hover")
+    opacity = isettings.get("opacity_on_hover")
+    if color or opacity:
+        theme_content.append(_patch_icon("hover", color, opacity))
+
+    color = isettings.get("color_on_select")
+    opacity = isettings.get("opacity_on_select")
+    if color or opacity:
+        theme_content.append(_patch_icon("selected", color, opacity))
+
+    text = sublime.encode_value(theme_content)
 
     for theme in themes:
-        theme_dest = os.path.join(dest, theme)
-        theme_name = os.path.splitext(theme)[0]
         log("Patching `{}`".format(theme))
-
-        with open(theme_dest, "w") as t:
-            t.write(THEME % {
-
-                "color": COLOR.format(
-                    ",\n" + INDENT, color, ""
-                ) if color else "",
-
-                "color_on_hover": COLOR.format(
-                    ",\n" + INDENT, color_on_hover, ","
-                ) if color_on_hover else ",",
-
-                "color_on_select": COLOR.format(
-                    ",\n" + INDENT, color_on_select, ","
-                ) if color_on_select else ",",
-
-                "opacity": OPACITY.format(
-                    ",\n" + INDENT, opacity, ","
-                ) if opacity else ",\n" + INDENT,
-
-                "opacity_on_hover": OPACITY.format(
-                    ",\n" + INDENT, opacity_on_hover, ""
-                ) if opacity_on_hover else "",
-
-                "opacity_on_select": OPACITY.format(
-                    ",\n" + INDENT, opacity_on_select, ""
-                ) if opacity_on_select else "",
-
-                "size": SIZE.format(
-                    "\n" + INDENT, size, ""
-                ) if size else "",
-
-                "row_padding": ROW_PADDING.format(
-                    ",\n" + INDENT, row_padding, ""
-                ) if row_padding else ""
-            })
+        with open(os.path.join(dest, theme), "w") as t:
+            t.write(text)
 
 
 def _patch_specific(theme, dest, isettings):
-    color = isettings.get("color", "")
-    color_on_hover = isettings.get("color_on_hover", "")
-    color_on_select = isettings.get("color_on_select", "")
-
-    theme_dest = os.path.join(dest, theme)
-    theme_name = os.path.splitext(theme)[0]
     log("Patching `{}`".format(theme))
 
-    with open(theme_dest, "w") as t:
-        t.write(THEME % {
+    theme_content = []
 
-            "color": COLOR.format(
-                ",\n" + INDENT, color, ""
-            ) if color else "",
+    color = isettings.get("color")
+    if color:
+        theme_content.append(_patch_icon(None, color))
 
-            "color_on_hover": COLOR.format(
-                ",\n" + INDENT, color_on_hover, ","
-            ) if color_on_hover else ",",
+    color_on_hover = isettings.get("color_on_hover")
+    if color_on_hover:
+        theme_content.append(_patch_icon("hover", color_on_hover))
 
-            "color_on_select": COLOR.format(
-                ",\n" + INDENT, color_on_select, ","
-            ) if color_on_select else ",",
+    color_on_select = isettings.get("color_on_select")
+    if color_on_select:
+        theme_content.append(_patch_icon("selected", color_on_select))
 
-            "opacity": "",
-            "opacity_on_hover": "",
-            "opacity_on_select": "",
-            "size": "",
-            "row_padding": ""
-        })
+    text = sublime.encode_value(theme_content)
+
+    with open(os.path.join(dest, theme), "w") as t:
+        t.write(text)
 
 
 def _clean_patches(patches):

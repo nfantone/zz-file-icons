@@ -1,3 +1,4 @@
+import colorsys
 import os
 import re
 import sublime
@@ -18,7 +19,7 @@ OVERLAY_ROOT = "{0} {1} {0}".format("zzz", PACKAGE_NAME)
 
 _current_settings = {}
 _default_settings = {}
-_pattern = re.compile(r"#([0-9a-fA-F]{3}){1,2}")
+_hsl_pattern = re.compile(r'hsl\(\s*(\d+),\s*(\d+)%,\s*(\d+)%\s*\)')
 _uuid = "9ebcce78-4cac-4089-8bd7-d551c634b052"
 
 
@@ -41,9 +42,14 @@ def _merge(*settings):
     return result
 
 
-def _get_colors():
+def _parse_hsl_color(color):
+    h, s, l = _hsl_pattern.match(color).groups()
+    r, g, b = colorsys.hls_to_rgb(int(h) / 360, int(l) / 100, int(s) / 100)
+    return [round(255 * r), round(255 * g), round(255 *b)]
+
+
+def _get_colors(package_settings):
     colors = {}
-    package_settings = package()
     color_options = [
         o for o in _default_settings if o.startswith("color")
     ]
@@ -51,14 +57,30 @@ def _get_colors():
     if package_settings.get("color"):
         for opt in color_options:
             color = package_settings.get(opt)
+            if isinstance(color, list):
+                # color: [255, 255, 255]
+                try:
+                    colors[opt] = [int(color[0]), int(color[1]), int(color[2])]
+                    continue
+                except:
+                    pass
 
-            if re.match(_pattern, color):
-                rgb_color = webcolors.hex_to_rgb(color)
-
-                color = ", ".join(str(e) for e in rgb_color)
-                colors[opt] = "[" + color + "]"
             else:
-                colors[opt] = ""
+                # color: hsl(360, 100%, 100%)
+                try:
+                    colors[opt] = _parse_hsl_color(color)
+                    continue
+                except:
+                    pass
+
+                # color: "white" or "#fff"
+                try:
+                    colors[opt] = webcolors.html5_parse_legacy_color(color)
+                    continue
+                except:
+                    pass
+
+            colors[opt] = []
 
     return colors
 
@@ -164,7 +186,7 @@ def icons():
 
     package_settings = package()
 
-    s = _get_colors()
+    s = _get_colors(package_settings)
     s["opacity"] = package_settings.get("opacity")
     s["opacity_on_hover"] = package_settings.get("opacity_on_hover")
     s["opacity_on_select"] = package_settings.get("opacity_on_select")

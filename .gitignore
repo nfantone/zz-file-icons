@@ -8,10 +8,9 @@
 *cache
 *.pyc
 
-icons/
-aliases/
-preferences/
 node_modules/
+
+package-lock.json
 
 # OS
 # =============================

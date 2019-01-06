@@ -7,9 +7,11 @@
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   // File type icons have different colors by default. However you
-  // can make them single colored. Just provide your color in #RGB or
-  // #RRGGBB format (e.g. "#fff", "#ABABAB", etc.) or leave this
-  // option empty if multi colored icons better fit your needs.
+  // can make them single colored by providing a color in:
+  // - CSS: "white"
+  // - HEX: "#fff", "#ABABAB"
+  // - HSL: "hsl(360, 100%, 100%)"
+  // - RGB: [255, 255, 255]
   "color": "",
 
   // Provide your color in #RGB or #RRGGBB format if you want to use
