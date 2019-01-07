@@ -1,0 +1,22 @@
+[
+  {
+    "caption": "A File Icon: Clean Patches",
+    "command": "afi_clean"
+  },
+  {
+    "caption": "A File Icon: Environment",
+    "command": "afi_environment"
+  },
+  {
+    "caption": "A File Icon: Revert to a Freshly Installed State",
+    "command": "afi_revert"
+  },
+  {
+    "caption": "A File Icon: Settings",
+    "command": "edit_settings", "args":
+    {
+      "base_file": "${packages}/A File Icon/.sublime/A File Icon.sublime-settings",
+      "default": "{\n  // A File Icon Preferences – User\n  // ================================================================\n\n  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n  // ! PLEASE RESTART SUBLIME TEXT FOR THESE CHANGES TO TAKE EFFECT !\n  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n  $0\n}\n"
+    }
+  }
+]

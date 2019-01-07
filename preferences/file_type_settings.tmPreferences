@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
     <key>scope</key>
-    <string>source.sublime-settings, source.json.settings</string>
+    <string>source.ini, source.env, source.json.settings, text.xml.config</string>
     <key>settings</key>
     <dict>
       <key>icon</key>
